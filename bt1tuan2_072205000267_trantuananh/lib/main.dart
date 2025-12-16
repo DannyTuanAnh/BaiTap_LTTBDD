@@ -88,7 +88,7 @@ class _MyAppState extends State<MyApp> {
                       ),
                       onPressed: () => _handleOnclick(),
                       child: Text(
-                        'Tính',
+                        'Tạo',
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.white,
