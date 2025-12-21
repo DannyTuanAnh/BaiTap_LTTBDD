@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thanh_toan_oop_072205000267_tran_tuan_anh/controller/controller_state.dart';
+import 'package:thanh_toan_oop_072205000267_tran_tuan_anh/controller/controller_payment.dart';
 import 'package:thanh_toan_oop_072205000267_tran_tuan_anh/widget/item_widget.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int selectedPayment = -1;
+  int selectedPaymentIdx = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
           //hiển thị icon ví tiền hoặc tên phương thức đã chọn
           Expanded(
             child: Center(
-              child: selectedPayment == -1
+              child: selectedPaymentIdx == -1
                   ? Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                         const SizedBox(height: 20),
                         Text(
-                          controller.payments[selectedPayment].title,
+                          controller.payments[selectedPaymentIdx].title,
                           style: const TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
@@ -91,7 +91,7 @@ class _MyAppState extends State<MyApp> {
               color: const Color(0xFF6C6C6C),
             ),
           ),
-          // Expanded thứ hai - danh sách các phương thức thanh toán
+          // danh sách các phương thức thanh toán
           Expanded(
             child: Column(
               children: [
@@ -106,10 +106,10 @@ class _MyAppState extends State<MyApp> {
                         title: payment.title,
                         shortName: payment.shortName,
                       ),
-                      isSelected: selectedPayment == index,
+                      isSelected: selectedPaymentIdx == index,
                       onTap: () {
                         setState(() {
-                          selectedPayment = index;
+                          selectedPaymentIdx = index;
                           controller.selectPayment(payment);
                         });
                       },
@@ -118,7 +118,7 @@ class _MyAppState extends State<MyApp> {
                 }),
                 const SizedBox(height: 20),
                 //chỉ hiển thị nút continue khi đã chọn phương thức thanh toán
-                if (selectedPayment != -1)
+                if (selectedPaymentIdx != -1)
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: SizedBox(
@@ -131,7 +131,7 @@ class _MyAppState extends State<MyApp> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                'Đang xử lý thanh toán bằng ${controller.payments[selectedPayment].title}',
+                                'Đang xử lý thanh toán bằng ${controller.payments[selectedPaymentIdx].title}',
                               ),
                               backgroundColor: Colors.green,
                             ),

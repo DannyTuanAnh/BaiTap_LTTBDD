@@ -1,61 +1,49 @@
 import 'package:thanh_toan_oop_072205000267_tran_tuan_anh/payment/abstract_payment.dart';
 
 class PaypalPayment implements Payment {
-  final String _clientId = "paypal_id";
+  final String _titlePrivate = "PayPal";
+  final String _titleShortName = "PPal";
 
   @override
-  String get title => "PayPal";
+  String get title => _titlePrivate;
 
   @override
-  String get shortName => "PayPal";
+  String get shortName => _titleShortName;
 
   @override
   void pay(double amount) {
-    _connect();
     print("Thanh toán $amount bằng PayPal");
-  }
-
-  void _connect() {
-    print("Kết nối PayPal...");
   }
 }
 
 class GooglePayPayment implements Payment {
-  final String _clientId = "gpay_id";
+  final String _titlePrivate = "Google Pay";
+  final String _titleShortName = "GPay";
 
   @override
-  String get title => "Google Pay";
+  String get title => _titlePrivate;
 
   @override
-  String get shortName => "GPay";
+  String get shortName => _titleShortName;
 
   @override
   void pay(double amount) {
-    _connect();
     print("Thanh toán $amount bằng Google Pay");
-  }
-
-  void _connect() {
-    print("Kết nối GooglePay...");
   }
 }
 
 class ApplePayPayment implements Payment {
-  final String _clientId = "apay_id";
+  final String _titlePrivate = "Apple Pay";
+  final String _titleShortName = "APay";
 
   @override
-  String get title => "Apple Pay";
+  String get title => _titlePrivate;
 
   @override
-  String get shortName => "APay";
+  String get shortName => _titleShortName;
 
   @override
   void pay(double amount) {
-    _connect();
     print("Thanh toán $amount bằng Apple Pay");
-  }
-
-  void _connect() {
-    print("Kết nối ApplePay...");
   }
 }

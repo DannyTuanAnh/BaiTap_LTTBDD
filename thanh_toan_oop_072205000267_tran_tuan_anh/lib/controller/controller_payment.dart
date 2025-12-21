@@ -8,15 +8,15 @@ class PaymentController {
     ApplePayPayment(),
   ];
 
-  Payment? _selectedPayment;
+  Payment? _selectedPaymentPrivate;
 
-  Payment? get selectedPayment => _selectedPayment;
+  Payment? get selectedPayment => _selectedPaymentPrivate;
 
   void selectPayment(Payment payment) {
-    _selectedPayment = payment;
+    _selectedPaymentPrivate = payment;
   }
 
   void pay(double amount) {
-    _selectedPayment?.pay(amount);
+    _selectedPaymentPrivate?.pay(amount);
   }
 }
