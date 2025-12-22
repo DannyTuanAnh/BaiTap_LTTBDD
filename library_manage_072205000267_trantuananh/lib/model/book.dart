@@ -22,5 +22,5 @@ class Book extends LibraryItem implements Borrowable {
   }
 
   @override
-  String get displayInfo => 'Tiêu đề: $title \nTác giả: $author \nLoại: $type';
+  String get displayInfo => 'Tên sách: $title \nTác giả: $author \nLoại: $type';
 }

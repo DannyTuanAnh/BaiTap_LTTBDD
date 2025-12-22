@@ -96,10 +96,10 @@ class _BookManagementScreenState extends State<BookManagementScreen> {
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 4,
-                  offset: const Offset(0, 2),
+                  color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.2),
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: Offset.zero,
                 ),
               ],
             ),
