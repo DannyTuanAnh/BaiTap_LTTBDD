@@ -60,15 +60,20 @@ class _UserManagementScreenState extends State<UserManagementScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Center(
+          child: const Text(
+            'Quản lý người dùng',
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          ),
+        ),
+      ),
       body: ListView.builder(
         itemCount: widget.controller.users.length,
         itemBuilder: (_, index) {
           final user = widget.controller.users[index];
           return ExpansionTile(
-            title: Text(user.name),
-            subtitle: Text(
-              'Đang mượn: ${user.borrowedBooks.length} quyển sách',
-            ),
+            title: Text(user.displayInfo),
             children: [
               if (user.borrowedBooks.isNotEmpty) ...[
                 const Padding(

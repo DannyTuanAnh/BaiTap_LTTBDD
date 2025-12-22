@@ -56,7 +56,13 @@ class _BookManagementScreenState extends State<BookManagementScreen> {
                 setState(() {});
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Đã thêm sách thành công!')),
+                  const SnackBar(
+                    backgroundColor: Colors.green,
+                    content: Text(
+                      'Đã thêm sách thành công!',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
                 );
               }
             },
@@ -70,16 +76,80 @@ class _BookManagementScreenState extends State<BookManagementScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Center(
+          child: const Text(
+            'Quản lý sách',
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          ),
+        ),
+      ),
       body: ListView.builder(
+        padding: const EdgeInsets.all(16),
         itemCount: widget.controller.books.length,
         itemBuilder: (_, index) {
           final book = widget.controller.books[index];
-          return ListTile(
-            title: Text(book.displayInfo),
-            trailing: Text(
-              book.isBorrowed ? 'Đã mượn' : 'Còn',
-              style: TextStyle(
-                color: book.isBorrowed ? Colors.red : Colors.green,
+          return Container(
+            margin: const EdgeInsets.only(bottom: 15),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.2),
+                  spreadRadius: 1,
+                  blurRadius: 4,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Thông tin sách
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          book.displayInfo,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                      ],
+                    ),
+                  ),
+                  // Trạng thái mượn
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: book.isBorrowed ? Colors.red : Colors.green,
+                        width: 2,
+                      ),
+                      color: book.isBorrowed
+                          ? Colors.red.withOpacity(0.1)
+                          : Colors.green.withOpacity(0.1),
+                    ),
+                    child: Text(
+                      book.isBorrowed ? 'Đã mượn' : 'Còn',
+                      style: TextStyle(
+                        color: book.isBorrowed ? Colors.red : Colors.green,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           );

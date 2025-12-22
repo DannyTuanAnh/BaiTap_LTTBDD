@@ -6,7 +6,7 @@ class Book extends LibraryItem implements Borrowable {
   bool _isBorrowed = false;
 
   Book({required String id, required String title, required this.author})
-    : super(id, title);
+    : super(id, title, 'book');
 
   @override
   bool get isBorrowed => _isBorrowed;
@@ -22,5 +22,5 @@ class Book extends LibraryItem implements Borrowable {
   }
 
   @override
-  String get displayInfo => '$title - $author';
+  String get displayInfo => 'Tiêu đề: $title \nTác giả: $author \nLoại: $type';
 }

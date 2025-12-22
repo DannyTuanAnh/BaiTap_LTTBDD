@@ -20,4 +20,7 @@ class User {
     book.returnItem();
     _borrowedBooksPrivate.remove(book);
   }
+
+  String get displayInfo =>
+      'Tên: $name \nĐang mượn: ${_borrowedBooksPrivate.length} quyển sách';
 }
