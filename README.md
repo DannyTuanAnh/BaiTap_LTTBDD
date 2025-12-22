@@ -86,5 +86,5 @@ Repository này chứa tất cả các bài tập về nhà và bài thực hàn
 - Đảm bảo đã cài đặt Flutter SDK trước khi chạy
 - Kiểm tra file `pubspec.yaml` trong mỗi thư mục để biết các dependencies cần thiết
 
-**Cập nhật lần cuối:** December 2025  
+**Cập nhật lần cuối:** 22th December 2025  
 **Repository:** [BaiTap_LTTBDD](https://github.com/DannyTuanAnh/BaiTap_LTTBDD)
