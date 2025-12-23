@@ -48,6 +48,12 @@ Repository này chứa tất cả các bài tập về nhà và bài thực hàn
   - Thư mục: `library_manage_072205000267_trantuananh`
   - Mô tả: Xây dựng hệ thống quản lý thư viện sử dụng các khái niệm OOP
 
+### Tuần 4
+
+- **Bài thực hành 1**
+  - Thư mục: `th1_tuan4_072205000267_trantuananh`
+  - Mô tả: Thực hành về các UI cơ bản với TextView và setState trong Flutter
+
 ## Công nghệ sử dụng
 
 - **Language:** Dart
@@ -86,5 +92,5 @@ Repository này chứa tất cả các bài tập về nhà và bài thực hàn
 - Đảm bảo đã cài đặt Flutter SDK trước khi chạy
 - Kiểm tra file `pubspec.yaml` trong mỗi thư mục để biết các dependencies cần thiết
 
-**Cập nhật lần cuối:** 22th December 2025  
+**Cập nhật lần cuối:** 23th December 2025  
 **Repository:** [BaiTap_LTTBDD](https://github.com/DannyTuanAnh/BaiTap_LTTBDD)
