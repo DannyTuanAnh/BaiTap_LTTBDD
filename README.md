@@ -6,7 +6,7 @@
 
 ## Giới thiệu
 
-Repository này chứa tất cả các bài tập về nhà và bài thực hành được giao trong suốt khóa học. Mỗi bài tập được tổ chức trong một thư mục riêng biệt để dễ dàng quản lý và theo dõi tiến độ học tập.
+Repository này chứa tất cả các bài tập về nhà và bài thực hành được giao trong suốt khóa học. Mỗi bài tập được tổ chức trong một thư mục các tuần riêng biệt để dễ dàng quản lý và theo dõi tiến độ học tập.
 
 ## Cấu trúc Repository
 
@@ -72,6 +72,7 @@ Repository này chứa tất cả các bài tập về nhà và bài thực hàn
 2. **Di chuyển vào thư mục bài tập cần chạy:**
 
    ```bash
+   cd <week_tuong_ung>
    cd <tên_thư_mục_bài_tập>
    ```
 
@@ -92,5 +93,5 @@ Repository này chứa tất cả các bài tập về nhà và bài thực hàn
 - Đảm bảo đã cài đặt Flutter SDK trước khi chạy
 - Kiểm tra file `pubspec.yaml` trong mỗi thư mục để biết các dependencies cần thiết
 
-**Cập nhật lần cuối:** 23th December 2025  
+**Cập nhật lần cuối:** 29th December 2025  
 **Repository:** [BaiTap_LTTBDD](https://github.com/DannyTuanAnh/BaiTap_LTTBDD)
