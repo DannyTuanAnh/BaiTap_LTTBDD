@@ -13,46 +13,58 @@ Repository này chứa tất cả các bài tập về nhà và bài thực hàn
 ### Tuần 1
 
 - **Bài tập 1**
-  - Thư mục: `_072205000267_trantuananh_bt1`
+  - Thư mục: `week1/_072205000267_trantuananh_bt1`
   - Mô tả: Bài tập đầu tiên làm quen với Flutter/Dart
 
 ### Tuần 2
 
 - **Bài tập 1**
 
-  - Thư mục: `bt1tuan2_072205000267_trantuananh`
+  - Thư mục: `week2/bt1tuan2_072205000267_trantuananh`
   - Mô tả: Bài tập về các widgets cơ bản
 
 - **Bài thực hành 2**
-  - Thư mục: `bt2tuan2_072205000267_trantuananh`
+  - Thư mục: `week2/bt2tuan2_072205000267_trantuananh`
   - Mô tả: Thực hành về layout và navigation
 
 ### Tuần 3
 
 - **Bài thực hành 2**
 
-  - Thư mục: `th2buoi3_072205000267_trantuananh`
+  - Thư mục: `week3/th2buoi3_072205000267_trantuananh`
   - Mô tả: Thực hành về state management
 
 - **Bài tập về Nullable**
 
-  - Thư mục: `nullable_tuan3_072205000267_trantuananh`
+  - Thư mục: `week3/nullable_tuan3_072205000267_trantuananh`
   - Mô tả: Tìm hiểu và thực hành về null safety trong Dart
 
 - **Hệ thống thanh toán OOP**
 
-  - Thư mục: `thanh_toan_oop_072205000267_tran_tuan_anh`
+  - Thư mục: `week3/thanh_toan_oop_072205000267_tran_tuan_anh`
   - Mô tả: Ứng dụng các nguyên lý lập trình hướng đối tượng để xây dựng hệ thống chọn hình thức thanh toán
 
 - **Quản lý thư viện OOP**
-  - Thư mục: `library_manage_072205000267_trantuananh`
+  - Thư mục: `week3/library_manage_072205000267_trantuananh`
   - Mô tả: Xây dựng hệ thống quản lý thư viện sử dụng các khái niệm OOP
 
 ### Tuần 4
 
 - **Bài thực hành 1**
-  - Thư mục: `th1_tuan4_072205000267_trantuananh`
+
+  - Thư mục: `week4/th1_tuan4_072205000267_trantuananh`
   - Mô tả: Thực hành về các UI cơ bản với TextView và setState trong Flutter
+
+- **Bài tập về nhà**
+  - Thư mục: `week4/th1_tuan4_072205000267_trantuananh`
+  - Mô tả: Thực hành tìm hiểu về các UI cơ bản trong flutter
+
+### Tuần 5
+
+- **Bài tập thực hành trên lớp**
+
+  - Thư mục: `week5/btap_thuc_hanh`
+  - Mô tả: Thực hành về Row/Column và LazyRow/LazyColumn đối với hiệu suất của bộ nhớ
 
 ## Công nghệ sử dụng
 
@@ -72,7 +84,6 @@ Repository này chứa tất cả các bài tập về nhà và bài thực hàn
 2. **Di chuyển vào thư mục bài tập cần chạy:**
 
    ```bash
-   cd <week_tuong_ung>
    cd <tên_thư_mục_bài_tập>
    ```
 
@@ -93,5 +104,5 @@ Repository này chứa tất cả các bài tập về nhà và bài thực hàn
 - Đảm bảo đã cài đặt Flutter SDK trước khi chạy
 - Kiểm tra file `pubspec.yaml` trong mỗi thư mục để biết các dependencies cần thiết
 
-**Cập nhật lần cuối:** 29th December 2025  
+**Cập nhật lần cuối:** 30th December 2025  
 **Repository:** [BaiTap_LTTBDD](https://github.com/DannyTuanAnh/BaiTap_LTTBDD)
