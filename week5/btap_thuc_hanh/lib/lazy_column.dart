@@ -8,7 +8,7 @@ class LazyListDemo extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Lazy ListView Demo')),
       body: ListView.builder(
-        itemCount: 1000, // 1000 dữ liệu
+        itemCount: 1000000, // 1000000 dữ liệu
         itemBuilder: (context, index) {
           return ListTile(title: Text('Item #$index'));
         },
