@@ -13,6 +13,7 @@ Repository này chứa tất cả các bài tập về nhà và bài thực hàn
 ### Tuần 1
 
 - **Bài tập 1**
+
   - Thư mục: `week1/_072205000267_trantuananh_bt1`
   - Mô tả: Bài tập đầu tiên làm quen với Flutter/Dart
 
@@ -24,6 +25,7 @@ Repository này chứa tất cả các bài tập về nhà và bài thực hàn
   - Mô tả: Bài tập về các widgets cơ bản
 
 - **Bài thực hành 2**
+
   - Thư mục: `week2/bt2tuan2_072205000267_trantuananh`
   - Mô tả: Thực hành về layout và navigation
 
@@ -45,6 +47,7 @@ Repository này chứa tất cả các bài tập về nhà và bài thực hàn
   - Mô tả: Ứng dụng các nguyên lý lập trình hướng đối tượng để xây dựng hệ thống chọn hình thức thanh toán
 
 - **Quản lý thư viện OOP**
+
   - Thư mục: `week3/library_manage_072205000267_trantuananh`
   - Mô tả: Xây dựng hệ thống quản lý thư viện sử dụng các khái niệm OOP
 
@@ -56,6 +59,7 @@ Repository này chứa tất cả các bài tập về nhà và bài thực hàn
   - Mô tả: Thực hành về các UI cơ bản với TextView và setState trong Flutter
 
 - **Bài tập về nhà**
+
   - Thư mục: `week4/th1_tuan4_072205000267_trantuananh`
   - Mô tả: Thực hành tìm hiểu về các UI cơ bản trong flutter
 
@@ -65,6 +69,16 @@ Repository này chứa tất cả các bài tập về nhà và bài thực hàn
 
   - Thư mục: `week5/btap_thuc_hanh`
   - Mô tả: Thực hành về Row/Column và LazyRow/LazyColumn đối với hiệu suất của bộ nhớ
+
+- **Thực hành Navigation + OOP**
+
+  - Thư mục: `week5/btap_navigation`
+  - Mô tả: Thực hành về Navigation và làm màn hình chào cho app SmartTasks
+
+- **Thực hành Data Flow Navigation**
+
+  - Thư mục: `week5/btap_data_flow`
+  - Mô tả: Xây dựng UI và logic để xử lý cho tính năng quên mật khẩu
 
 ## Công nghệ sử dụng
 
@@ -104,5 +118,5 @@ Repository này chứa tất cả các bài tập về nhà và bài thực hàn
 - Đảm bảo đã cài đặt Flutter SDK trước khi chạy
 - Kiểm tra file `pubspec.yaml` trong mỗi thư mục để biết các dependencies cần thiết
 
-**Cập nhật lần cuối:** 30th December 2025  
+**Cập nhật lần cuối:** 05th January 2026  
 **Repository:** [BaiTap_LTTBDD](https://github.com/DannyTuanAnh/BaiTap_LTTBDD)
