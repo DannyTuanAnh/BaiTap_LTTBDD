@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/uth.jpg', width: 120, height: 120),
+            Image.asset('assets/images/uth.jpg', width: 120, height: 120),
             const SizedBox(height: 24),
             const Text(
               'UTH SmartTasks',

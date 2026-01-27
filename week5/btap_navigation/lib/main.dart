@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'screens/splash_screen.dart';
 
 /// Entry point của ứng dụng UTH SmartTasks
 /// Ứng dụng quản lý task với onboarding flow
-void main() {
+void main() async {
+  // Đảm bảo Flutter bindings được khởi tạo
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Khởi tạo Firebase
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const MyApp());
 }
 

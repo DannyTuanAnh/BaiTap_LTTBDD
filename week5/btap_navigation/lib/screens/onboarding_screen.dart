@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/onboarding_data.dart';
 import '../widgets/onboarding_page.dart';
-import 'home_screen.dart';
+import 'login_screen.dart';
 
 /// Onboarding Screen - Màn hình giới thiệu ứng dụng
 /// Hiển thị 3 trang giới thiệu với navigation
@@ -40,7 +40,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   /// Logic chuyển đến trang kế tiếp hoặc Home
   void _goToNextPageOrHome() {
     if (_currentPage == _onboardingPages.length - 1) {
-      _navigateToHome();
+      _navigateToLogin();
     } else {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
@@ -49,11 +49,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
   }
 
-  /// Logic bỏ qua onboarding và đến Home
-  void _navigateToHome() {
+  /// Logic bỏ qua onboarding và đến Login
+  void _navigateToLogin() {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const HomeScreen()),
+      MaterialPageRoute(builder: (context) => const LoginScreen()),
     );
   }
 
@@ -73,7 +73,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       elevation: 0,
       actions: [
         TextButton(
-          onPressed: _navigateToHome,
+          onPressed: _navigateToLogin,
           child: const Text(
             'Skip',
             style: TextStyle(color: Colors.blue, fontSize: 16),
