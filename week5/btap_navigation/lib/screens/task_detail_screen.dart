@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/task_model.dart';
-import '../services/task_api_service.dart';
+import '../repositories/task_repository.dart';
 
 /// Task Detail Screen - Màn hình chi tiết task
+/// MVVM: Sử dụng Repository để load dữ liệu từ local database
 class TaskDetailScreen extends StatefulWidget {
   final int taskId;
 
@@ -13,7 +14,7 @@ class TaskDetailScreen extends StatefulWidget {
 }
 
 class _TaskDetailScreenState extends State<TaskDetailScreen> {
-  final TaskApiService _apiService = TaskApiService();
+  final TaskRepository _repository = TaskRepository();
   TaskModel? _task;
   bool _isLoading = true;
   bool _isDeleting = false;
@@ -26,12 +27,15 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
 
   Future<void> _loadTaskDetail() async {
     try {
-      final task = await _apiService.getTaskById(widget.taskId);
+      print('Loading task detail for ID: ${widget.taskId}');
+      final task = await _repository.getTaskById(widget.taskId);
+      print('Loaded task: ${task?.title ?? "NULL"}');
       setState(() {
         _task = task;
         _isLoading = false;
       });
     } catch (e) {
+      print('Error loading task detail: $e');
       setState(() {
         _isLoading = false;
       });
@@ -69,11 +73,14 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
       });
 
       try {
-        await _apiService.deleteTask(widget.taskId);
+        print('Deleting task ID: ${widget.taskId}');
+        await _repository.deleteTask(widget.taskId);
+        print('Task deleted successfully');
         if (mounted) {
           Navigator.pop(context, true); // Return true to indicate deletion
         }
       } catch (e) {
+        print('Error deleting task: $e');
         setState(() {
           _isDeleting = false;
         });
@@ -107,7 +114,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
           : _task == null
           ? const Center(child: Text('Task not found'))
           : SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -115,136 +122,72 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                   Text(
                     _task!.title,
                     style: const TextStyle(
-                      fontSize: 24,
+                      fontSize: 28,
                       fontWeight: FontWeight.bold,
+                      color: Colors.black87,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 16),
 
                   // Description
-                  Text(
-                    _task!.description,
-                    style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade50,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      _task!.description,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey.shade700,
+                        height: 1.5,
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 24),
 
-                  // Status, Priority, Category badges
-                  Row(
-                    children: [
-                      _buildBadge(_task!.category, Icons.work, Colors.purple),
-                      const SizedBox(width: 8),
-                      _buildBadge(_task!.status, Icons.timer, Colors.orange),
-                      const SizedBox(width: 8),
-                      _buildBadge(_task!.priority, Icons.flag, Colors.red),
-                    ],
+                  // Status badge
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: _task!.status == 'Completed'
+                          ? Colors.green.shade100
+                          : Colors.orange.shade100,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          _task!.status == 'Completed'
+                              ? Icons.check_circle
+                              : Icons.pending,
+                          size: 18,
+                          color: _task!.status == 'Completed'
+                              ? Colors.green.shade700
+                              : Colors.orange.shade700,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          'Status: ${_task!.status}',
+                          style: TextStyle(
+                            color: _task!.status == 'Completed'
+                                ? Colors.green.shade700
+                                : Colors.orange.shade700,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 24),
-
-                  // Subtasks
-                  if (_task!.subtasks.isNotEmpty) ...[
-                    const Text(
-                      'Subtasks',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    ..._task!.subtasks.map(
-                      (subtask) => Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: Row(
-                          children: [
-                            Icon(
-                              subtask.isCompleted
-                                  ? Icons.check_box
-                                  : Icons.check_box_outline_blank,
-                              color: subtask.isCompleted
-                                  ? Colors.green
-                                  : Colors.grey,
-                            ),
-                            const SizedBox(width: 12),
-                            Expanded(
-                              child: Text(
-                                subtask.title,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: subtask.isCompleted
-                                      ? Colors.grey
-                                      : Colors.black,
-                                  decoration: subtask.isCompleted
-                                      ? TextDecoration.lineThrough
-                                      : null,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                  ],
-
-                  // Attachments
-                  if (_task!.attachments.isNotEmpty) ...[
-                    const Text(
-                      'Attachments',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    ..._task!.attachments.map(
-                      (attachment) => Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.attach_file, color: Colors.blue),
-                            const SizedBox(width: 8),
-                            Expanded(
-                              child: Text(
-                                attachment.fileName,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.blue,
-                                  decoration: TextDecoration.underline,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
                 ],
               ),
             ),
-    );
-  }
-
-  Widget _buildBadge(String text, IconData icon, Color color) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 16, color: color),
-          const SizedBox(width: 4),
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: color,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

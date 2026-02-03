@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'settings_screen.dart';
-import '../widgets/home_tab.dart';
+import '../views/task_list_view.dart';
 import '../widgets/calendar_tab.dart';
-import '../widgets/add_task_tab.dart';
+import '../views/add_task_view.dart';
 import '../widgets/document_tab.dart';
 
 /// Main Screen - Màn hình chính với Bottom Navigation Bar
+/// MVVM: Sử dụng TaskListView thay vì HomeTab
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -19,13 +20,24 @@ class _HomeScreenState extends State<HomeScreen> {
   // Các màn hình cho từng tab
   late final List<Widget> _screens;
 
+  // Method để chuyển về tab Home từ bên ngoài
+  void navigateToHome() {
+    if (mounted) {
+      setState(() {
+        _currentIndex = 0;
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     _screens = [
-      const HomeTab(),
+      const TaskListView(), // MVVM Architecture
       const CalendarTab(),
-      const AddTaskTab(),
+      AddTaskView(
+        onTaskAdded: navigateToHome, // Truyền callback để navigate về Home
+      ),
       const DocumentsTab(),
       const SettingsScreen(),
     ];

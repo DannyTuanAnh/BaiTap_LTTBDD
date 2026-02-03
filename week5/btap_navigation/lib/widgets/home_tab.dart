@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../models/task_model.dart';
 import '../services/task_api_service.dart';
 import '../screens/task_detail_screen.dart';
@@ -171,7 +170,6 @@ class _HomeTabState extends State<HomeTab> {
 
   Widget _buildTaskCard(TaskModel task) {
     final statusColor = _getStatusColor(task.status);
-    final dateFormat = DateFormat('dd/MM/yyyy HH:mm');
 
     return GestureDetector(
       onTap: () => _navigateToDetail(task.id),
@@ -243,11 +241,6 @@ class _HomeTabState extends State<HomeTab> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ),
-                  const Spacer(),
-                  Text(
-                    dateFormat.format(task.dueDate),
-                    style: TextStyle(fontSize: 11, color: Colors.grey.shade600),
                   ),
                 ],
               ),

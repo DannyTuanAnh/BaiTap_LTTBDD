@@ -97,28 +97,16 @@ class TaskModel {
   final String title;
   final String description;
   final String status;
-  final String priority;
-  final String category;
-  final DateTime dueDate;
   final DateTime createdAt;
   final DateTime updatedAt;
-  final List<Subtask> subtasks;
-  final List<Attachment> attachments;
-  final List<Reminder> reminders;
 
   TaskModel({
     required this.id,
     required this.title,
     required this.description,
     required this.status,
-    required this.priority,
-    required this.category,
-    required this.dueDate,
     required this.createdAt,
     required this.updatedAt,
-    required this.subtasks,
-    required this.attachments,
-    required this.reminders,
   });
 
   factory TaskModel.fromJson(Map<String, dynamic> json) {
@@ -137,32 +125,12 @@ class TaskModel {
       title: json['title']?.toString() ?? '',
       description: json['description']?.toString() ?? '',
       status: json['status']?.toString() ?? 'Pending',
-      priority: json['priority']?.toString() ?? 'Medium',
-      category: json['category']?.toString() ?? '',
-      dueDate:
-          DateTime.tryParse(json['dueDate']?.toString() ?? '') ??
-          DateTime.now(),
       createdAt:
           DateTime.tryParse(json['createdAt']?.toString() ?? '') ??
           DateTime.now(),
       updatedAt:
           DateTime.tryParse(json['updatedAt']?.toString() ?? '') ??
           DateTime.now(),
-      subtasks:
-          (json['subtasks'] as List<dynamic>?)
-              ?.map((e) => Subtask.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          [],
-      attachments:
-          (json['attachments'] as List<dynamic>?)
-              ?.map((e) => Attachment.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          [],
-      reminders:
-          (json['reminders'] as List<dynamic>?)
-              ?.map((e) => Reminder.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          [],
     );
   }
 
@@ -172,14 +140,8 @@ class TaskModel {
       'title': title,
       'description': description,
       'status': status,
-      'priority': priority,
-      'category': category,
-      'dueDate': dueDate.toIso8601String(),
       'createdAt': createdAt.toIso8601String(),
       'updatedAt': updatedAt.toIso8601String(),
-      'subtasks': subtasks.map((e) => e.toJson()).toList(),
-      'attachments': attachments.map((e) => e.toJson()).toList(),
-      'reminders': reminders.map((e) => e.toJson()).toList(),
     };
   }
 }
